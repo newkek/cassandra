@@ -26,6 +26,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.CodecException;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,7 +90,7 @@ public class ErrorMessage extends Message.Response
                         // The number of failures is also present in protocol v5, but used instead to specify the size of the failure map
                         int failure = body.readInt();
 
-                        Map<InetAddressAndPort, RequestFailureReason> failureReasonByEndpoint = new ConcurrentHashMap<>();
+                        ImmutableMap.Builder<InetAddressAndPort, RequestFailureReason> failureReasonByEndpoint = ImmutableMap.builder();
                         if (version.isGreaterOrEqualTo(ProtocolVersion.V5))
                         {
                             for (int i = 0; i < failure; i++)
@@ -103,12 +104,12 @@ public class ErrorMessage extends Message.Response
                         if (code == ExceptionCode.WRITE_FAILURE)
                         {
                             WriteType writeType = Enum.valueOf(WriteType.class, CBUtil.readString(body));
-                            te = new WriteFailureException(cl, received, blockFor, writeType, failureReasonByEndpoint);
+                            te = new WriteFailureException(cl, received, blockFor, writeType, failureReasonByEndpoint.build());
                         }
                         else
                         {
                             byte dataPresent = body.readByte();
-                            te = new ReadFailureException(cl, received, blockFor, dataPresent != 0, failureReasonByEndpoint);
+                            te = new ReadFailureException(cl, received, blockFor, dataPresent != 0, failureReasonByEndpoint.build());
                         }
                     }
                     break;

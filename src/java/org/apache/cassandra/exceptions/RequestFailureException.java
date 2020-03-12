@@ -17,7 +17,6 @@
  */
 package org.apache.cassandra.exceptions;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -40,14 +39,7 @@ public class RequestFailureException extends RequestExecutionException
         this.consistency = consistency;
         this.received = received;
         this.blockFor = blockFor;
-
-        // It is possible for the passed in failureReasonByEndpoint map
-        // to have new entries added after this exception is constructed
-        // (e.g. a delayed failure response from a replica). So to be safe
-        // we make a copy of the map at this point to ensure it will not be
-        // modified any further. Otherwise, there could be implications when
-        // we encode this map for transport.
-        this.failureReasonByEndpoint = new HashMap<>(failureReasonByEndpoint);
+        this.failureReasonByEndpoint = failureReasonByEndpoint;
     }
 
     private static String buildFailureString(Map<InetAddressAndPort, RequestFailureReason> failures)
