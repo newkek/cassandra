@@ -22,8 +22,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-import com.google.common.collect.ImmutableMap;
-
 import org.apache.cassandra.config.DatabaseDescriptor;
 import org.apache.cassandra.locator.ReplicaPlan;
 import org.slf4j.Logger;

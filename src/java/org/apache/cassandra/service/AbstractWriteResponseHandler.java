@@ -24,8 +24,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.stream.Collectors;
 
-import com.google.common.collect.ImmutableMap;
-
 import org.apache.cassandra.db.ConsistencyLevel;
 
 import org.apache.cassandra.locator.EndpointsForToken;
