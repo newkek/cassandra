@@ -168,7 +168,7 @@ jobs:
     resource_class: xlarge
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 25
+    parallelism: 10
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -222,7 +222,7 @@ jobs:
           if [ -d ~/dtest_jars ]; then
             cp ~/dtest_jars/dtest* /tmp/cassandra/build/
           fi
-          ant testclasslist -Dtest.runners=4 -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=unit
+          ant testclasslist -Dtest.runners=8 -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=unit
         no_output_timeout: 15m
     - store_test_results:
         path: /tmp/cassandra/build/test/output/
@@ -244,8 +244,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
@@ -707,8 +707,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
@@ -765,8 +765,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j8_upgradetests-no-vnodes:
@@ -918,7 +918,7 @@ jobs:
     resource_class: xlarge
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 25
+    parallelism: 10
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -972,7 +972,7 @@ jobs:
           if [ -d ~/dtest_jars ]; then
             cp ~/dtest_jars/dtest* /tmp/cassandra/build/
           fi
-          ant testclasslist -Dtest.runners=4 -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=unit
+          ant testclasslist -Dtest.runners=8 -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=unit
         no_output_timeout: 15m
     - store_test_results:
         path: /tmp/cassandra/build/test/output/
@@ -994,8 +994,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j11_jvm_dtests:
@@ -1058,7 +1058,7 @@ jobs:
           if [ -d ~/dtest_jars ]; then
             cp ~/dtest_jars/dtest* /tmp/cassandra/build/
           fi
-          ant testclasslist -Dtest.runners=4 -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=distributed
+          ant testclasslist -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=distributed
         no_output_timeout: 15m
     - store_test_results:
         path: /tmp/cassandra/build/test/output/
@@ -1080,8 +1080,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
@@ -1296,8 +1296,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j8_jvm_dtests:
@@ -1360,7 +1360,7 @@ jobs:
           if [ -d ~/dtest_jars ]; then
             cp ~/dtest_jars/dtest* /tmp/cassandra/build/
           fi
-          ant testclasslist -Dtest.runners=4 -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=distributed
+          ant testclasslist -Dtest.classlistfile=/tmp/java_tests_${CIRCLE_NODE_INDEX}_final.txt  -Dtest.classlistprefix=distributed
         no_output_timeout: 15m
     - store_test_results:
         path: /tmp/cassandra/build/test/output/
@@ -1382,8 +1382,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j8_build:
@@ -1707,8 +1707,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 1024M
-    - CCM_HEAP_NEWSIZE: 256M
+    - CCM_MAX_HEAP_SIZE: 12288M
+    - CCM_HEAP_NEWSIZE: 2048M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
