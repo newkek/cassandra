@@ -707,8 +707,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 12288M
-    - CCM_HEAP_NEWSIZE: 2048M
+    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
@@ -765,8 +765,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 12288M
-    - CCM_HEAP_NEWSIZE: 2048M
+    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j8_upgradetests-no-vnodes:
@@ -1001,7 +1001,7 @@ jobs:
   j11_jvm_dtests:
     docker:
     - image: spod/cassandra-testing-ubuntu1810-java11:20181210
-    resource_class: xlarge
+    resource_class: large
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
     parallelism: 10
@@ -1080,8 +1080,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 12288M
-    - CCM_HEAP_NEWSIZE: 2048M
+    - CCM_MAX_HEAP_SIZE: 8092M
+    - CCM_HEAP_NEWSIZE: 1024M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
@@ -1296,14 +1296,14 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 12288M
-    - CCM_HEAP_NEWSIZE: 2048M
+    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j8_jvm_dtests:
     docker:
     - image: spod/cassandra-testing-ubuntu1810-java11-w-dependencies:20190306
-    resource_class: xlarge
+    resource_class: large
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
     parallelism: 10
@@ -1352,7 +1352,7 @@ jobs:
           which java
           java -version
     - run:
-        name: Run Unit Tests (testclasslist)
+        name: Run JVM DTests (testclasslist)
         command: |
           export PATH=$JAVA_HOME/bin:$PATH
           time mv ~/cassandra /tmp
@@ -1382,8 +1382,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 12288M
-    - CCM_HEAP_NEWSIZE: 2048M
+    - CCM_MAX_HEAP_SIZE: 8192M
+    - CCM_HEAP_NEWSIZE: 1024M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
   j8_build:
@@ -1707,8 +1707,8 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 12288M
-    - CCM_HEAP_NEWSIZE: 2048M
+    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - CASSANDRA_USE_JDK11: true
