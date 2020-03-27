@@ -638,7 +638,7 @@ jobs:
     resource_class: xlarge
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 50
+    parallelism: 100 #pdt
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -707,7 +707,7 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_MAX_HEAP_SIZE: 2048M
     - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
@@ -718,7 +718,7 @@ jobs:
     resource_class: xlarge
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 50
+    parallelism: 100 #pdt
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -765,7 +765,7 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_MAX_HEAP_SIZE: 2048M
     - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
@@ -1004,7 +1004,7 @@ jobs:
     resource_class: large
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 10
+    parallelism: 10 #jdt
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -1249,7 +1249,7 @@ jobs:
     resource_class: xlarge
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 50
+    parallelism: 100 #pdt
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -1296,7 +1296,7 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_MAX_HEAP_SIZE: 2048M
     - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-8-openjdk-amd64
@@ -1306,7 +1306,7 @@ jobs:
     resource_class: large
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 10
+    parallelism: 10 #jdt
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -1638,7 +1638,7 @@ jobs:
     resource_class: xlarge
     working_directory: ~/
     shell: /bin/bash -eo pipefail -l
-    parallelism: 50
+    parallelism: 100 #pdt
     steps:
     - attach_workspace:
         at: /home/cassandra
@@ -1707,7 +1707,7 @@ jobs:
     - CASSANDRA_SKIP_SYNC: true
     - DTEST_REPO: git://github.com/apache/cassandra-dtest.git
     - DTEST_BRANCH: master
-    - CCM_MAX_HEAP_SIZE: 4096M
+    - CCM_MAX_HEAP_SIZE: 2048M
     - CCM_HEAP_NEWSIZE: 512M
     - JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
     - JDK_HOME: /usr/lib/jvm/java-11-openjdk-amd64
