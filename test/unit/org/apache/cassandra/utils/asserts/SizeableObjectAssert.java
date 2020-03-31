@@ -19,7 +19,8 @@
 package org.apache.cassandra.utils.asserts;
 
 import org.apache.cassandra.utils.ObjectSizes;
-import org.assertj.core.api.Assertions;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public interface SizeableObjectAssert<SELF extends SizeableObjectAssert<SELF>>
 {
@@ -27,14 +28,20 @@ public interface SizeableObjectAssert<SELF extends SizeableObjectAssert<SELF>>
 
     default SELF hasSizeLessThan(double expectedSize)
     {
-        Assertions.assertThat(ObjectSizes.measureDeep(actual())).isLessThan(Math.round(expectedSize));
+        double measured = (double) ObjectSizes.measureDeep(actual());
+        assertThat(measured)
+                  .withFailMessage("Size of measured object [%f] is not less than the expected size [%f]", measured, expectedSize)
+                  .isLessThan(expectedSize);
         return ((SELF) this);
 
     }
 
     default SELF hasSizeGreaterThanOrEqual(double expectedSize)
     {
-        Assertions.assertThat(ObjectSizes.measureDeep(actual())).isGreaterThanOrEqualTo(Math.round(expectedSize));
+        double measured = (double) ObjectSizes.measureDeep(actual());
+        assertThat(measured)
+                  .withFailMessage("Size of measured object [%f] is not greater than or equal to the expected size [%f]", measured, expectedSize)
+                  .isGreaterThanOrEqualTo(expectedSize);
         return ((SELF) this);
     }
 }
