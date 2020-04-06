@@ -20,13 +20,13 @@ j8_par_executor: &j8_par_executor
   executor:
     name: java8-executor
     exec_resource_class: xlarge
-  parallelism: 100
+  parallelism: 4
 
 j8_small_par_executor: &j8_small_par_executor
   executor:
     name: java8-executor
     exec_resource_class: xlarge
-  parallelism: 5
+  parallelism: 4
 
 j8_medium_par_executor: &j8_medium_par_executor
   executor:
@@ -44,7 +44,7 @@ j11_par_executor: &j11_par_executor
   executor:
     name: java11-executor
     exec_resource_class: xlarge
-  parallelism: 100
+  parallelism: 4
 
 j11_small_par_executor: &j11_small_par_executor
   executor:
